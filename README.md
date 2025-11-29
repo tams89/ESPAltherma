@@ -76,6 +76,21 @@ If you are using an **ESP8266** select the `nodemcuv2` environment.
 
     *If you're not sure which one to take, choose the closest or Default.h. The only thing that could happen is that you would have missing values, null values or wrong label names.*
 
+    - Optional: static IP config
+      If you prefer a static IP instead of DHCP, add the following lines to your local `src/setup_local.h`:
+
+      ```c++
+      #define WIFI_IP 192,168,1,50
+      #define WIFI_GATEWAY 192,168,1,1
+      #define WIFI_SUBNET 255,255,255,0
+      // Optional DNS
+      #define WIFI_PRIMARY_DNS 8,8,8,8
+      #define WIFI_SECONDARY_DNS 8,8,4,4
+      ```
+
+      These values must be provided as comma-separated bytes because the firmware uses
+      `IPAddress local_IP(WIFI_IP);` to build the IP address.
+
     **NEW!** *You can now select locale version of the value definition. French, German and Spanish are supported.*
     Add the Language in the path. Eg for German:
 

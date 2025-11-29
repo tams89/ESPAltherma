@@ -206,6 +206,20 @@ void setup_wifi()
   // We start by connecting to a WiFi network
   mqttSerial.printf("Connecting to %s\n", WIFI_SSID);
 
+  // Diagnostic: scan for nearby networks and print results to serial
+  // This helps confirm the SSID is visible and gives an idea about RSSI/Channel
+  int n = WiFi.scanNetworks();
+  if (n == 0) {
+    mqttSerial.println("No WiFi networks found by scan");
+  } else {
+    mqttSerial.printf("Found %d WiFi networks:\n", n);
+    for (int i = 0; i < n; ++i) {
+      mqttSerial.printf("%d: %s (%ddBm) Channel: %d\n", i + 1, WiFi.SSID(i).c_str(), WiFi.RSSI(i), WiFi.channel(i));
+      delay(10);
+    }
+  }
+
+
   #if defined(WIFI_IP) && defined(WIFI_GATEWAY) && defined(WIFI_SUBNET)
     IPAddress local_IP(WIFI_IP);
     IPAddress gateway(WIFI_GATEWAY);
@@ -245,7 +259,21 @@ void setup_wifi()
   {
     WiFi.begin(WIFI_SSID, WIFI_PWD, 0, 0, true);
   }
-  checkWifi();
+  // Wait for up to 30 seconds while printing status each second
+  int attempts = 0;
+  while (WiFi.status() != WL_CONNECTED && attempts < 30)
+  {
+    delay(1000);
+    attempts++;
+    mqttSerial.printf("WiFi status: %d (attempt %d)\n", WiFi.status(), attempts);
+  }
+  if (WiFi.status() != WL_CONNECTED) {
+    mqttSerial.printf("Failed to connect to WiFi after %d attempts. Status=%d\n", attempts, WiFi.status());
+    // Fallback to existing behavior (checkWifi() triggers a reboot after 120s)
+    checkWifi();
+  } else {
+    mqttSerial.printf("Connected. IP Address: %s\n", WiFi.localIP().toString().c_str());
+  }
   mqttSerial.printf("Connected. IP Address: %s\n", WiFi.localIP().toString().c_str());
 }
 
