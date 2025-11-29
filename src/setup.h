@@ -3,6 +3,14 @@
 // To keep secrets out of the repo, create a local file `src/setup_local.h` and
 // add it to `.gitignore`. If `setup_local.h` exists it will be included and
 // will override the defaults below.
+//
+// Note on static IP: you can define a static IP in `src/setup_local.h` by
+// uncommenting and setting the following macros (use comma separated values):
+// #define WIFI_IP 192,168,1,50
+// #define WIFI_GATEWAY 192,168,1,1
+// #define WIFI_SUBNET 255,255,255,0
+// Optional DNS: #define WIFI_PRIMARY_DNS 8,8,8,8
+// Optional DNS: #define WIFI_SECONDARY_DNS 8,8,4,4
 
 // Try to include local setup if it exists. This avoids forcing developers to
 // modify project files or commit secrets.
@@ -41,15 +49,9 @@
 
 #define FREQUENCY 30000 //query values every 30 sec
 
-#if defined(ARDUINO_M5Stick_C) || defined(ARDUINO_M5Stick_C_Plus) || defined(ARDUINO_M5Stick_C_Plus2)  || defined(ARDUINO_M5Stack_Tough)
 // Values used when M5StickC, M5STickCPlus or M5Stick_C_Plus2 environment is selected:
 #define RX_PIN    36// Pin connected to the TX pin of X10A 
 #define TX_PIN    26// Pin connected to the RX pin of X10A
-#else 
-//Default GPIO PINs for Serial2:
-#define RX_PIN    16// Pin connected to the TX pin of X10A 
-#define TX_PIN    17// Pin connected to the RX pin of X10A
-#endif
 
 #define PIN_THERM 0// Pin connected to the thermostat relay (normally open)
 #define PIN_THERM_ACTIVE_STATE HIGH// State to trigger the thermostat relay
