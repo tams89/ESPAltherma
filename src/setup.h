@@ -1,19 +1,42 @@
-//Setup your credentials and mqtt info here:
-//only change the value between the " " leave the rest of the line untouched.
-#define WIFI_SSID "SSID"//**Your SSID here**
-#define WIFI_PWD "password"//**Your password here** leave empty if open (bad!)
+#pragma once
+// Setup your credentials and mqtt info here.
+// To keep secrets out of the repo, create a local file `src/setup_local.h` and
+// add it to `.gitignore`. If `setup_local.h` exists it will be included and
+// will override the defaults below.
 
-//Uncomment this to set a static IP instead of DHCP for the ESP (Separate by commas instead of dots)
-//#define WIFI_IP 192, 168, 0, 5
-//#define WIFI_SUBNET 255, 255, 255, 0
-//#define WIFI_GATEWAY 192, 168, 0, 1
-//#define WIFI_PRIMARY_DNS 8, 8, 8, 8     //A DNS address is needed, even if it's not used 
-//#define WIFI_SECONDARY_DNS 8, 8, 4, 4   //A DNS address is needed, even if it's not used
+// Try to include local setup if it exists. This avoids forcing developers to
+// modify project files or commit secrets.
+#if defined(__has_include)
+#  if __has_include("setup_local.h")
+#    include "setup_local.h"
+#  endif
+#endif
 
-#define MQTT_SERVER "192.168.1.4"//**IP address here of your MQTT server**
-#define MQTT_USERNAME ""//leave empty if not set (bad!)
-#define MQTT_PASSWORD ""//leave empty if not set (bad!)
+// Fallback defaults (safe placeholders) - these will be used if no
+// `setup_local.h` overrides are provided. We use #ifndef to let local files
+// or -D defines override them.
+#ifndef WIFI_SSID
+#define WIFI_SSID "<YOUR_SSID>" // set your SSID in src/setup_local.h
+#endif
+
+#ifndef WIFI_PWD
+#define WIFI_PWD "<YOUR_WIFI_PASSWORD>" // set in src/setup_local.h
+#endif
+
+#ifndef MQTT_SERVER
+#define MQTT_SERVER "<MQTT_SERVER>" // set in src/setup_local.h
+#endif
+
+#ifndef MQTT_USERNAME
+#define MQTT_USERNAME "<MQTT_USERNAME>"
+#endif
+
+#ifndef MQTT_PASSWORD
+#define MQTT_PASSWORD "<MQTT_PASSWORD>"
+#endif
+#ifndef MQTT_PORT
 #define MQTT_PORT 1883
+#endif
 //#define MQTT_ENCRYPTED // uncomment if MQTT connection is encrypted via TLS
 
 #define FREQUENCY 30000 //query values every 30 sec
@@ -112,7 +135,7 @@
 //#include "def/Altherma(LT_CA_CB_11-16kW).h"
 //#include "def/Altherma(LT_CB_04-08kW Bizone).h"
 //#include "def/Altherma(LT_CB_11-16kW Bizone).h"
-//#include "def/Altherma(LT_EBLQ-EBLQ-CA series 5-7kW Monobloc).h"
+#include "def/Altherma(LT_EBLQ-EBLQ-CA series 5-7kW Monobloc).h"
 //#include "def/Altherma(LT_EBLQ-EDLQ-CA series 11-16kW Monobloc).h"
 //#include "def/Altherma(LT_Multi_DHWHP).h"
 //#include "def/Altherma(LT_Multi_Hybrid).h"

@@ -4,6 +4,7 @@
 .vscode/launch.json
 .vscode/ipch
 src/setup.h
+src/setup_local.h
 private/
 .vscode/settings.json
 contrib/ldd_decoder/bin/
