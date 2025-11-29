@@ -89,64 +89,15 @@
 // #define MQTT_OneTopic "espaltherma/OneATTR/" //Keep the ending "/" !!
 
 //Uncomment to disable common frequent log messages via MQTT to reduce network load
-//#define DISABLE_LOG_MESSAGES
+#define DISABLE_LOG_MESSAGES
 
 //Uncomment this line to enable DebugSerial - MQTT<>Serial gateway functionality
 //Messages received on espaltherma/serialTX are sent to serial port
 //Responses from serial port are published to espaltherma/serialRX
 //#define DEBUG_SERIAL
 
-
-//Uncomment *ONE* of the following according to your installation.
 //Then, open and edit the selected file in the /include/def/ folder and uncomment each values you are interested in.
-
-//To use a locale version eg German, change the path to the file to the localized version. 
-
-//Eg:
-//instead of: #include "def/Altherma(EGSQH-A series 10kW GEO2).h" 
-//use: 
-//            #include "def/German/Altherma(EGSQH-A series 10kW GEO2).h"
-//
-//Suported locales: French, German, Spanish.
-
-//#include "def/DEFAULT.h"
-
-//#include "def/Altherma(EBLA-EDLA D series 4-8kW Monobloc).h"
-//#include "def/Altherma(EBLA-EDLA D series 9-16kW Monobloc).h"
-//#include "def/Altherma(EGSAH-X-EWSAH-X-D series 6-10kW GEO3).h"
-//#include "def/Altherma(EGSQH-A series 10kW GEO2).h"
-//#include "def/Altherma(EPGA D EAB-EAV-EAVZ D(J) series 11-16kW).h"
-//#include "def/Altherma(EPRA D ETSH-X 16P30-50 D series 14-16kW-ECH2O).h"
-//#include "def/Altherma(EPRA D ETV16-ETB16-ETVZ16 D series 14-16kW).h"
-//#include "def/Altherma(EPRA D_D7 ETSH-X 16P30-50 E_E7 series 14-18kW-ECH2O).h"
-//#include "def/Altherma(EPRA D_D7 ETV16-ETB16-ETVZ16 E_E7 series 14-18kW).h"
-//#include "def/Altherma(EPRA E ETSH-X 16P30-50 E series 8-12kW-ECH2O).h"
-//#include "def/Altherma(EPRA E ETV16-ETB16-ETVZ16 E_EJ series 8-12kW).h"
-//#include "def/Altherma(ERGA D EHSH-X P30-50 D series 04-08kW-ECH2O).h"
-//#include "def/Altherma(ERGA D EHV-EHB-EHVZ DA series 04-08kW).h"
-//#include "def/Altherma(ERGA D EHV-EHB-EHVZ DJ series 04-08 kW).h"
-//#include "def/Altherma(ERGA E EHSH-X P30-50 E_EF series 04-08kW-ECH2O).h"
-//#include "def/Altherma(ERGA E EHV-EHB-EHVZ E_EJ series 04-08kW).h"
-//#include "def/Altherma(ERLA D EBSH-X 16P30-50 D SERIES 11-16kW-ECH2O).h"
-//#include "def/Altherma(ERLA D EBV-EBB-EBVZ D SERIES 11-16kW).h"
-//#include "def/Altherma(ERLA03 D EHFH-EHFZ DJ series 3kW).h"
-//#include "def/Altherma(Hybrid).h"
-//#include "def/Altherma(LT_CA_CB_04-08kW).h"
-//#include "def/Altherma(LT_CA_CB_11-16kW).h"
-//#include "def/Altherma(LT_CB_04-08kW Bizone).h"
-//#include "def/Altherma(LT_CB_11-16kW Bizone).h"
 #include "def/Altherma(LT_EBLQ-EBLQ-CA series 5-7kW Monobloc).h"
-//#include "def/Altherma(LT_EBLQ-EDLQ-CA series 11-16kW Monobloc).h"
-//#include "def/Altherma(LT_Multi_DHWHP).h"
-//#include "def/Altherma(LT_Multi_Hybrid).h"
-//#include "def/Daikin Mini chiller(EWAA-EWYA D series 4-8kW).h"
-//#include "def/Daikin Mini chiller(EWAA-EWYA D series 9-16kW).h"
-//#include "def/Daikin Mini chiller(EWAQ-EWYQ B series 4-8kW).h"
-//#include "def/DEFAULT.h"
-//#include "def/EKHWET-BAV3(Multi DHW tank).h"
-
-//#include "def/PROTOCOL_S_ROTEX.h"
-//#include "def/PROTOCOL_S.h"
 
 
 #ifndef LABELDEF
