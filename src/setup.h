@@ -50,8 +50,8 @@
 #define FREQUENCY 30000 //query values every 30 sec
 
 // Values used when M5StickC, M5STickCPlus or M5Stick_C_Plus2 environment is selected:
-#define RX_PIN    36// Pin connected to the TX pin of X10A 
-#define TX_PIN    26// Pin connected to the RX pin of X10A
+#define RX_PIN 32 // Pin connected to the TX pin of X10A (yellow wire)
+#define TX_PIN 26 // Pin connected to the RX pin of X10A (white wire)
 
 #define PIN_THERM 0// Pin connected to the thermostat relay (normally open)
 #define PIN_THERM_ACTIVE_STATE HIGH// State to trigger the thermostat relay
@@ -99,8 +99,7 @@
 //#define DEBUG_SERIAL
 
 //Then, open and edit the selected file in the /include/def/ folder and uncomment each values you are interested in.
-#include "def/Altherma(LT_EBLQ-EBLQ-CA series 5-7kW Monobloc).h"
-
+#include "def/ALTHERMA(LT_CA_CB_04-08KW).h"
 
 #ifndef LABELDEF
 #warning "NO DEFINITION SELECTED: Please select your heat pump definition in /src/setup.h -- Using default."
